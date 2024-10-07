@@ -1,0 +1,28 @@
+<h1>Kittens#index</h1>
+<p>Find me in app/views/kittens/index.html.erb</p>
+
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Cuteness</th>
+    <th>Softness</th>
+    <th>&nbsp;</th>
+  <thead>
+  <tbody>
+  <% @kittens.each do |k| %>
+    <tr>
+      <td><%= link_to k.name, kitten_path(k.id) %></td>
+      <td><%= k.age %></td>
+      <td><%= k.cuteness %></td>
+      <td><%= k.softness %></td>
+      <td>
+        <%= button_to "Edit", edit_kitten_path(k.id), method: :get %>
+        <%= button_to "Delete", kitten_path(k.id), method: :delete %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to "New Kitten", new_kitten_path %>
